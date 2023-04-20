@@ -8,6 +8,7 @@ import {API_PEOPLE} from "@constants/api";
 import {useQueryParams} from "../../hooks/useQueryParams";
 import {changeHTTP} from "../../utils/network";
 import PeopleNavigation from "@components/PeoplePage/PeopleNavigation";
+import {getPeoplePageId} from "../../services/getPeopleData";
 
 
 const PeoplePage = ({setErrorApi}) => {
@@ -35,7 +36,7 @@ const PeoplePage = ({setErrorApi}) => {
             setPeople(peopleList)
             setPrevPage(changeHTTP(res.previous))
             setNextPage(changeHTTP(res.next))
-            setCounterPage(getPeopleId(url))
+            setCounterPage(getPeoplePageId(url))
             setErrorApi(false)
         } else {
             setErrorApi(true)
