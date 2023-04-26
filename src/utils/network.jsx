@@ -3,9 +3,8 @@ import {HTTP, HTTPS} from "../constants/api";
 
 //           Изменяет url с HTTP на HTTPS
 
-export const changeHTTP = (url) => {
-  const result = url ? url.replace(HTTP, HTTPS) : url
-    return result
+export const changeHTTP = url => {
+    return url ? url.replace(HTTP, HTTPS) : url;
 }
 
 export const getApiResource = async (url) => {
@@ -22,6 +21,14 @@ export const getApiResource = async (url) => {
         console.error('Could not fetch.', error.message);
         return false;
     }
+}
+
+export const makeConcurrentRequest = async (url) => {
+    const res = await Promise.all(url.map(res => {
+        return fetch(res).then(res => res.json())
+    }));
+
+    return res;
 }
 
 // getApiResource(SWAPI_ROOT + SWAPI_PEOPLE)
