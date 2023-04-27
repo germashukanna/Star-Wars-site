@@ -10,6 +10,8 @@ import PersonPhoto from "../../components/PersonPage/PersonPhoto";
 import s from './PersonPage.module.css'
 import PersonLinkBack from "../../components/PersonLinkBack";
 import UiLoading from "../../components/Ui/UiLoading";
+import {useSelector} from "react-redux";
+import favoriteReducer from "../../store/reducers/favoriteReducer";
 
 const PersonFilms = React.lazy(() => import("../../components/PersonPage/PersonFilms"))
 
@@ -18,15 +20,23 @@ const PersonPage = ({setErrorApi}) => {
 
     const {id} = useParams();
 
+    const [personId, setPersonId] = useState(null)
     const [personInfo, setPersonInfo] = useState(null)
     const [personName, setPersonName] = useState(null)
     const [personPhoto, setPersonPhoto] = useState(null)
     const [personFilms, setPersonFilms] = useState(null)
+    const [personFavorite, setsPersonFavorite] = useState(false)
+
+    const storeData = useSelector(state => state.favoriteReducer)
+
 
     useEffect(() => {
         (async () => {
             const res = await getApiResource(`${API_PERSON}/${id}/`)
 
+            storeData[id] ? setsPersonFavorite(true) : setsPersonFavorite(false)
+
+            setPersonId(id)
             if (res) {
                 setPersonInfo([
                     {title: 'Height', data: res.height},
@@ -59,13 +69,16 @@ const PersonPage = ({setErrorApi}) => {
                     <PersonPhoto
                         personPhoto={personPhoto}
                         personName={personName}
+                        personId={personId}
+                        personFavorite={personFavorite}
+                        setsPersonFavorite={setsPersonFavorite}
                     />
                     {personInfo && <PersonInfo personInfo={personInfo}/>}
                     {personFilms && (
                         <Suspense fallback={<UiLoading theme={'white'}/>}>
                             <PersonFilms personFilms={personFilms}/>
                         </Suspense>
-                        )}
+                    )}
                 </div>
             </div>
         </>
