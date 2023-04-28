@@ -2,7 +2,8 @@ import PropTypes from "prop-types";
 import s from './PersonPhoto.module.css'
 import {useDispatch} from "react-redux";
 import {removePersonToFavorite, setPersonToFavorite} from "../../../store/actions";
-
+import star from './img/star.png'
+import starBlack from './img/start-black.png'
 
 const PersonPhoto = ({
                          personPhoto, personName, personId,
@@ -10,29 +11,34 @@ const PersonPhoto = ({
                      }) => {
     const dispatch = useDispatch();
 
-    const set = () => {
-        dispatch(setPersonToFavorite({
-            [personId]: {
-                name: personName,
-                img: personPhoto
-            }
-        }))
-        setsPersonFavorite(true)
-    }
+    const dispatchFavoritePeople = () => {
+        if (personFavorite) {
+            dispatch(removePersonToFavorite(personId))
+            setsPersonFavorite(false)
+        } else {
+            dispatch(setPersonToFavorite({
+                [personId]: {
+                    name: personName,
+                    img: personPhoto
+                }
+            }))
+            setsPersonFavorite(true)
+        }
 
-    const remove = () => {
-        dispatch(removePersonToFavorite(personId))
-        setsPersonFavorite(false)
     }
 
     return (
-        <div className={s.container}>
-            <img className={s.photo} src={personPhoto} alt={personName}/>
-            {personFavorite
-                ? <button onClick={remove}>Удалить из избранное</button>
-                : <button onClick={set}>Добавить в избранное</button>
-            }
-        </div>
+        <>
+            <div className={s.container}>
+                <img className={s.photo} src={personPhoto} alt={personName}/>
+                <img
+                    className={s.favorite}
+                    src={personFavorite ? star : starBlack}
+                    alt={personFavorite ? 'delete to favorite' : 'add to favorite'}
+                    onClick={dispatchFavoritePeople}
+                />
+            </div>
+        </>
     )
 }
 

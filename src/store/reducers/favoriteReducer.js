@@ -1,8 +1,9 @@
 import {ADD_PERSON_TO_FAVORITE, REMOVE_PERSON_TO_FAVORITE} from "../constans/actionTypes";
 import {omit} from "lodash";
+import {getLocalStorage} from "../../utils/localStorage";
 
 
-const initialState = ''
+const initialState = getLocalStorage('store')
 
 
 

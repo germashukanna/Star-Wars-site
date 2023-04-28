@@ -1,5 +1,6 @@
 import {NavLink} from "react-router-dom";
 import s from './Navigation.module.css'
+import Favorite from "../components/Favorite";
 
 export const Navigation = () => {
     return (
@@ -9,7 +10,7 @@ export const Navigation = () => {
                 <li><NavLink to={'/people/?page=1'}>People</NavLink></li>
                 <li><NavLink to={'/not-found'}>Not found</NavLink></li>
 
-                <li><NavLink to={'/favorites'}>Favorites</NavLink></li>
+                <Favorite/>
             </ul>
         </nav>
     )
