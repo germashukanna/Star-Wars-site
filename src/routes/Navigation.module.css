@@ -1,6 +1,4 @@
 .nav {
-    /*display: flex;*/
-    /*align-items: center;*/
     margin-bottom: var(--spacing-large);
 }
 
@@ -34,4 +32,13 @@
     border-radius: var(--border-radius-small);
     color: var(--color-violet);
     text-shadow: none;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    margin-right: var(--spacing-large);
+    margin-top: -10px;
+    object-fit: cover;
+    object-position: center center;
 }
