@@ -7,6 +7,7 @@ import s from './App.module.css'
 import NotFoundPage from "../NotFoundPage";
 import PersonPage from "../PersonPage";
 import FavoritesPage from "../FavoritesPage";
+import SearchPage from "../SearchPage";
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
                 <Route path={'/people'} element={<PeoplePage/>}/>
                 <Route path={'/people/:id'} element={<PersonPage/>}/>
                 <Route path={'/favorites'} element={<FavoritesPage/>}/>
+                <Route path={'/search'} element={<SearchPage/>}/>
                 <Route path={'/not-found'} element={<NotFoundPage/>}/>
                 <Route path={'*'} element={<NotFoundPage/>}/>
             </Routes>

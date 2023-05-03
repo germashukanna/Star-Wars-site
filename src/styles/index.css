@@ -70,6 +70,10 @@ img {
     display: block;
 }
 
+*, *:after, *:before {
+    box-sizing: border-box;
+}
+
 .header__text {
     color: var(--theme-default-header);
     line-height: 1.7;

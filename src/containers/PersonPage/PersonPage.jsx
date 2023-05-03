@@ -11,7 +11,6 @@ import s from './PersonPage.module.css'
 import PersonLinkBack from "../../components/PersonLinkBack";
 import UiLoading from "../../components/Ui/UiLoading";
 import {useSelector} from "react-redux";
-import favoriteReducer from "../../store/reducers/favoriteReducer";
 
 const PersonFilms = React.lazy(() => import("../../components/PersonPage/PersonFilms"))
 

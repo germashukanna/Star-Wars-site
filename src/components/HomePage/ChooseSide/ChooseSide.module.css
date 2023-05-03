@@ -1,7 +1,7 @@
 .container {
     --border-radius: 10px;
 
-    --color-light: #29e52d;
+    --color-light: #fffffd;
     --color-dark: #d82228;
     --color-neitral: #ffff00;
 
@@ -32,7 +32,7 @@
 
 .item__header {
     position: absolute;
-    bottom: 20px;
+    bottom: 5px;
     width: 100%;
     font-size: var(--font-size-subheader);
     text-align: center;
