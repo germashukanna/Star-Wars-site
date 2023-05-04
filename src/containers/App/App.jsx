@@ -8,6 +8,7 @@ import NotFoundPage from "../NotFoundPage";
 import PersonPage from "../PersonPage";
 import FavoritesPage from "../FavoritesPage";
 import SearchPage from "../SearchPage";
+import ErrorMessage from "../../components/ErrorMessage";
 
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
                 <Route path={'/people/:id'} element={<PersonPage/>}/>
                 <Route path={'/favorites'} element={<FavoritesPage/>}/>
                 <Route path={'/search'} element={<SearchPage/>}/>
+                <Route path={'/fail'} element={<ErrorMessage/>}/>
                 <Route path={'/not-found'} element={<NotFoundPage/>}/>
                 <Route path={'*'} element={<NotFoundPage/>}/>
             </Routes>
